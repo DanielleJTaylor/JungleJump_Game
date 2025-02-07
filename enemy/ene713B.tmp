@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnrlrt83dx6ik"]
+
+[ext_resource type="Texture2D" uid="uid://bioevwddku012" path="res://assets/sprites/opossum.png" id="1_6f6be"]
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_6xwej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eraag"]
+size = Vector2(24, 18)
+
+[sub_resource type="Animation" id="Animation_cy4xy"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ude7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwo5m"]
+_data = {
+"RESET": SubResource("Animation_ude7x"),
+"walk": SubResource("Animation_cy4xy")
+}
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_6xwej")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6f6be")
+hframes = 6
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_eraag")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jwo5m")
+}
+autoplay = "walk"
