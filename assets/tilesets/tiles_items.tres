@@ -1,0 +1,5 @@
+[gd_resource type="TileSet" format=3 uid="uid://dn505hopwb4de"]
+
+[resource]
+custom_data_layer_0/name = "type"
+custom_data_layer_0/type = 4
