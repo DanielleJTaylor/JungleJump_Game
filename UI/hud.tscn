@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2dagip6jh7i4"]
+
+[ext_resource type="Script" path="res://UI/hud.gd" id="1_f3b36"]
+[ext_resource type="FontFile" uid="uid://crbqminp168gy" path="res://assets/Kenney Thick.ttf" id="1_lrbdy"]
+[ext_resource type="Texture2D" uid="uid://c4f1s6h5oc6hy" path="res://assets/heart.png" id="2_8l83e"]
+[ext_resource type="AudioStream" uid="uid://cppfmwk5ujey4" path="res://assets/audio/pickup2.ogg" id="4_oa1ut"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwtot"]
+font = ExtResource("1_lrbdy")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_f3b36")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+label_settings = SubResource("LabelSettings_iwtot")
+
+[node name="LifeCounter" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="L1" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("2_8l83e")
+stretch_mode = 5
+
+[node name="L2" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("2_8l83e")
+stretch_mode = 5
+
+[node name="L3" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("2_8l83e")
+stretch_mode = 5
+
+[node name="L4" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("2_8l83e")
+stretch_mode = 5
+
+[node name="L5" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("2_8l83e")
+stretch_mode = 5
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oa1ut")
